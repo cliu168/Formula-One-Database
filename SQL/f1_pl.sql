@@ -95,8 +95,8 @@ BEGIN
     SELECT D.fname, D.lname, AVG(R.points) AS AvgPts
     FROM (
         SELECT P.driverID, P.points
-        FROM RacePointsView AS P, Circuits AS C
-        WHERE C.circuitID = P.circuitID AND P.circuitID = mycircuitID AND C.circuitID = mycircuitID
+        FROM RacePointsView AS P
+        WHERE P.circuitID = mycircuitID
     ) AS R, Drivers AS D
     WHERE D.driverID = R.driverID
     GROUP BY R.driverID
@@ -118,14 +118,13 @@ BEGIN
 END; //   
 
 -- Return the average number points for a specific circuit of each constructor and the respective constructor’s name. Order by descending number of points.
-CREATE OR REPLACE PROCEDURE Q10(IN ci VARCHAR(100))
+CREATE OR REPLACE PROCEDURE Q10(IN mycircuitID VARCHAR(100))
 BEGIN
     SELECT CS.name, AVG(R.points) As avgPts
     FROM (
         SELECT P.constructorID, P.points
-        FROM RacePointsView AS P, Circuits AS C
-        WHERE C.name = ci AND
-            C.circuitID = P.circuitID
+        FROM RacePointsView AS P
+        WHERE P.circuitID = mycircuitID
     ) AS R, Constructors AS CS
     WHERE CS.constructorID = R.constructorID 
     GROUP BY R.constructorID
@@ -147,14 +146,13 @@ BEGIN
 END; //
 
 -- Return driver first name and last names, and their respective number of wins in a specific circuit. Order by descending number of wins.
-CREATE OR REPLACE PROCEDURE Q12(IN ci VARCHAR(100))
+CREATE OR REPLACE PROCEDURE Q12(IN mycircuitID VARCHAR(100))
 BEGIN
     SELECT D.fname, D.lname, R.numWins
     FROM (
         SELECT W.driverID, COUNT(W.raceID) AS numWins
-        FROM RaceWinnersView AS W, Circuits AS C
-        WHERE C.name = ci AND
-            C.circuitID = W.circuitID
+        FROM RaceWinnersView AS W
+        WHERE W.circuitID = mycircuitID
         GROUP BY W.driverID
     ) AS R, Drivers AS D
     WHERE D.driverID = R.driverID
@@ -163,8 +161,7 @@ END; //
 
 -- Return driver first name and last names, and their respective fastest lap time in a specific circuit. Order by ascending all time fastest lap time.
 -- Missing data
--- Slow query
-CREATE OR REPLACE PROCEDURE Q13(IN ci VARCHAR(100))
+CREATE OR REPLACE PROCEDURE Q13(IN mycircuitID VARCHAR(100))
 BEGIN
     SELECT D.fname, D.lname, R.fastestLap
     FROM (
@@ -172,10 +169,9 @@ BEGIN
         FROM (
             SELECT RR.driverID, R.circuitID, RR.fastestLapTime
             FROM Races AS R, RaceResults AS RR
-            WHERE R.raceID = RR.raceID
-        ) AS F, Circuits AS C
-        WHERE C.name = ci AND
-            C.circuitID = F.circuitID
+            WHERE R.raceID = RR.raceID AND
+                R.circuitID = mycircuitID
+        ) AS F
         GROUP BY F.driverID
     ) AS R, Drivers AS D
     WHERE D.driverID = R.driverID AND
@@ -200,12 +196,12 @@ BEGIN
 END; //
 
 -- Return first name and last name of all drivers who have ever had an accident/collision in a specific circuit.
-CREATE OR REPLACE PROCEDURE Q16(IN ci VARCHAR(100))
+-- Slow query
+CREATE OR REPLACE PROCEDURE Q16(IN mycircuitID VARCHAR(100))
 BEGIN
     SELECT DISTINCT D.fname, D.lname
-    FROM Drivers AS D, Circuits AS C, Races AS R, RaceResults AS RR
-    WHERE C.name = ci AND
-        C.circuitID = R.circuitID AND
+    FROM Drivers AS D, Races AS R, RaceResults AS RR
+    WHERE R.circuitID = mycircuitID AND
         R.raceID = RR.raceID AND
         D.driverID = RR.driverID AND
         (RR.statusID = 3 OR RR.statusID = 4);
@@ -224,14 +220,13 @@ END; //
 
 -- Return average number of pit stops of all drivers that have won at a specific circuit. Order by ascending pit stops.
 -- Missing data
-CREATE OR REPLACE PROCEDURE Q18(IN ci VARCHAR(100))
+CREATE OR REPLACE PROCEDURE Q18(IN mycircuitID VARCHAR(100))
 BEGIN
     SELECT D.fname, D.lname, AVG(P.numPitStops) AS avgPits
     FROM (
         SELECT W.raceID, W.driverID
-        FROM RaceWinnersView AS W, Circuits AS C
-        WHERE C.name = ci AND
-            C.circuitID = W.circuitID
+        FROM RaceWinnersView AS W
+        WHERE W.circuitID = mycircuitID
     ) AS R, Drivers AS D, PitStops AS P
     WHERE D.driverID = R.driverID AND
         P.driverID = R.driverID AND

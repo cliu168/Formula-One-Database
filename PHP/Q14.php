@@ -1,5 +1,5 @@
 <head> 
-  <title>Number of accidents at circuits</title>
+  <title>Number of Accidents at Circuits</title>
  </head>
  <body>
  
@@ -26,14 +26,11 @@ if (!$db) {
   $result = mysqli_query($db, "CALL Q14()");
   // call to procedure
 
-  if (!$result) {
+  if (!$result || $result->num_rows == 0) {
     echo "No results.\n";
     $show = false;
-
-  } else if (!$result || $result->num_rows == 0) {
-    echo "No results.\n";
-  }
-  else {
+    
+  } else {
     echo "<table border=1>\n";
     echo "<tr><td>Name</td><td>Location</td><td>Accidents</td></tr>\n";
     $not_done = 0;
@@ -56,7 +53,7 @@ if (!$db) {
 <html>
   <head>
   <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script> 
-    <title> Number of accidents at circuits </title>
+    <title>Number of Accidents at Circuits</title>
     <script>
       var show =<?php echo json_encode($show); ?>;
       window.onload = function () {
@@ -65,7 +62,7 @@ if (!$db) {
           exportEnabled: true,
           theme: "light1",
           title: {
-            text: "Number of accidents at circuits"
+            text: "Number of Accidents at Circuits"
           },
           data: [{
             type: "column",

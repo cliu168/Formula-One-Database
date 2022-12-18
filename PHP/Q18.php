@@ -1,5 +1,5 @@
 <head> 
-  <title>Average number of pit stops for winners of a circuit</title>
+  <title>Average Pit Stops for Winners of a Specific Circuit</title>
  </head>
  <body>
  
@@ -34,13 +34,10 @@ if (!$db) {
   $result = mysqli_query($db, "CALL Q18('".$input."')");
   // call to procedure
 
-  if (!$result) {
+  if (!$result || $result->num_rows == 0) {
     echo "No results.\n";
     $show = false;
 
-  } 
-  else if (!$result || $result->num_rows == 0) {
-    echo "No results.\n";
   } else {
     echo "<table border=1>\n";
     echo "<tr><td>FirstName</td><td>LastName</td><td>AveragePitStops</td></tr>\n";
@@ -64,7 +61,7 @@ if (!$db) {
 <html>
   <head>
   <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script> 
-    <title> Average number of pit stops for winners of a circuit </title>
+    <title>Average Pit Stops for Winners of a Specific Circuit</title>
     <script>
       var show =<?php echo json_encode($show); ?>;
       window.onload = function () {
@@ -73,7 +70,7 @@ if (!$db) {
           exportEnabled: true,
           theme: "light1",
           title: {
-            text: "Average number of pit stops for winners of a circuit"
+            text: "Average Pit Stops for Winners of a Specific Circuit"
           },
           data: [{
             type: "column",

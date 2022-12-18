@@ -1,5 +1,5 @@
 <head> 
-  <title>Driver wins at circuit</title>
+  <title>Driver Wins at Specific Circuit</title>
  </head>
  <body>
  
@@ -34,12 +34,10 @@ if (!$db) {
   $result = mysqli_query($db, "CALL Q12('".$input."')");
   // call to procedure
 
-  if (!$result) {
+  if (!$result || $result->num_rows == 0) {
     echo "No results.\n";
     $show = false;
 
-  } else if (!$result || $result->num_rows == 0) {
-    echo "No results.\n";
   } else {
     echo "<table border=1>\n";
     echo "<tr><td>FirstName</td><td>LastName</td><td>Wins</td></tr>\n";
@@ -64,7 +62,7 @@ if (!$db) {
 <html>
   <head>
   <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script> 
-    <title> Driver wins at circuit</title>
+    <title>Driver Wins at Specific Circuit</title>
     <script>
       var show =<?php echo json_encode($show); ?>;
       window.onload = function () {
@@ -73,7 +71,7 @@ if (!$db) {
           exportEnabled: true,
           theme: "light1",
           title: {
-            text: "Driver wins at circuit"
+            text: "Driver Wins at Specific Circuit"
           },
           data: [{
             type: "column",

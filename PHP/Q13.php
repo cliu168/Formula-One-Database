@@ -1,5 +1,5 @@
 <head> 
-  <title>Fastest Laps at Circuit</title>
+  <title>Driver Fastest Lap at Specific Circuit</title>
  </head>
  <body>
  
@@ -46,3 +46,7 @@ if (!$db) {
 }
 
 // PHP code about to end
+
+?>
+
+ </body>

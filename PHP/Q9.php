@@ -1,5 +1,5 @@
 <head> 
-  <title>Average number pointrs for drivers per season</title>
+  <title>Average Points of Drivers per Season</title>
  </head>
  <body>
  
@@ -26,12 +26,10 @@ if (!$db) {
   $result = mysqli_query($db, "CALL Q9()");
   // call to procedure
 
-  if (!$result) {
-    echo "No results.\n";
-    $show = false;
-
-  } else if (!$result || $result->num_rows == 0) {
+  if (!$result || $result->num_rows == 0) {
     echo "No results.\n"; 
+    $show = false;
+    
   } else {
     echo "<table border=1>\n";
     echo "<tr><td>FirstName</td><td>LastName</td><td>AveragePts</td></tr>\n";
@@ -56,7 +54,7 @@ if (!$db) {
 <html>
   <head>
   <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script> 
-    <title> Average number pointrs for drivers per season </title>
+    <title>Average Points of Drivers per Season</title>
     <script>
       var show =<?php echo json_encode($show); ?>;
       window.onload = function () {
@@ -65,7 +63,7 @@ if (!$db) {
           exportEnabled: true,
           theme: "light1",
           title: {
-            text: "Average number pointrs for drivers per season"
+            text: "Average Points of Drivers per Season"
           },
           data: [{
             type: "column",

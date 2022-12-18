@@ -1,5 +1,5 @@
 <head> 
-  <title>Average number of points for constructors at a circuit"</title>
+  <title>Average Points of Constructors for a Circuit</title>
  </head>
  <body>
  
@@ -34,12 +34,10 @@ if (!$db) {
   $result = mysqli_query($db, "CALL Q10('".$input."')");
   // call to procedure
 
-  if (!$result) {
+  if (!$result || $result->num_rows == 0) {
     echo "No results.\n";
     $show = false;
-
-  } else if (!$result || $result->num_rows == 0) {
-    echo "No results.\n";
+    
   } else {
     echo "<table border=1>\n";
     echo "<tr><td>Name</td><td>AvgPts</td></tr>\n";
@@ -64,7 +62,7 @@ if (!$db) {
 <html>
   <head>
   <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script> 
-    <title> Average number of points for constructors at a circuit" </title>
+    <title>Average Points of Constructors for a Circuit</title>
     <script>
       var show =<?php echo json_encode($show); ?>;
       window.onload = function () {
@@ -73,7 +71,7 @@ if (!$db) {
           exportEnabled: true,
           theme: "light1",
           title: {
-            text: "Average number of points for constructors at a circuit"
+            text: "Average Points of Constructors for a Circuit"
           },
           data: [{
             type: "column",

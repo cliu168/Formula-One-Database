@@ -1,5 +1,5 @@
 <head> 
-  <title>Drivers with accident at circuit</title>
+  <title>Drivers with Accident at Specific Circuit</title>
  </head>
  <body>
  
@@ -18,7 +18,6 @@ if (!$db) {
 
 } else {
   $input = $_POST['circuitid'];
-  
   if ($input == "select") {
     echo "Invalid circuit!\n";
     exit();
@@ -32,11 +31,9 @@ if (!$db) {
   $result = mysqli_query($db, "CALL Q16('".$input."')");
   // call to procedure
 
-  if (!$result) {
+  if (!$result || $result->num_rows == 0) {
     echo "No results.\n";
 
-  } else if (!$result || $result->num_rows == 0) {
-    echo "No results.\n";
   } else {
     echo "<table border=1>\n";
     echo "<tr><td>First name</td><td>Last name</td></tr>\n";
@@ -49,3 +46,7 @@ if (!$db) {
 }
 
 // PHP code about to end
+
+?>
+
+ </body>

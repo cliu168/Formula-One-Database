@@ -1,11 +1,12 @@
 <head>
-  <title>Number of drivers by nationality</title>
+  <title>Number of Drivers by Nationality</title>
  </head>
  <body>
  
  <?php
  
 // PHP code just started
+
 $dataPoints = array();
 $show = true;
 ini_set('error_reporting', E_ALL);
@@ -14,9 +15,11 @@ ini_set('display_errors', true);
 
 $db = mysqli_connect("dbase.cs.jhu.edu", "22fa_szhan141", "TvW17CsQSB");
 // ********* Remember to use your MySQL username and password here ********* //
+
 if (!$db) {
   echo "Connection failed!";
   $show = false;
+
 } else {
   // This says that the $ID variable should be assigned a value obtained as an
   // input to the PHP code. In this case, the input is called 'ID'.
@@ -24,9 +27,13 @@ if (!$db) {
   mysqli_select_db($db, "22fa_szhan141_db");
   // ********* Remember to use the name of your database here ********* //
 
-  $result = mysqli_query($db, "CALL RankNationalityDesc()");
+  $result = mysqli_query($db, "CALL Q1()");
+  // call to procedure
+
   if (!$result || $result->num_rows == 0) {
     echo "No results.\n";
+    $show = false;
+
   } else {
     // call to procedure
     echo "<table border=1>\n";
@@ -40,11 +47,8 @@ if (!$db) {
         }
       $not_done++;
     }
-  
-
     echo "</table>\n";
   }
- 
 }
 
 // PHP code about to end
@@ -53,7 +57,7 @@ if (!$db) {
 <html>
   <head>
 	<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script> 
-    <title> Rank nationality in descending order </title>
+    <title>Number of Drivers by Nationality</title>
     <script>
       var show =<?php echo json_encode($show); ?>;
       window.onload = function () {
@@ -62,7 +66,7 @@ if (!$db) {
           exportEnabled: true,
           theme: "light1", 
           title: {
-            text: "Number of drivers by nationality"
+            text: "Number of Drivers by Nationality"
           },
           data: [{
             type: "column",

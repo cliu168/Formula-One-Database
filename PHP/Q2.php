@@ -15,9 +15,10 @@ $db = mysqli_connect("dbase.cs.jhu.edu", "22fa_szhan141", "TvW17CsQSB");
 
 if (!$db) {
   echo "Connection failed!";
+
 } else {
-  $nationality = $_POST['nationality'];
-  if ($nationality == "select") {
+  $input = $_POST['nationality'];
+  if ($input == "select") {
     echo "Invalid nationality!\n";
     exit();
   }
@@ -27,15 +28,12 @@ if (!$db) {
   mysqli_select_db($db, "22fa_szhan141_db");
   // ********* Remember to use the name of your database here ********* //
 
-  $result = mysqli_query($db, "CALL ShowDriversOfNationality('".$nationality."')");
+  $result = mysqli_query($db, "CALL Q2('".$input."')");
   // call to procedure
 
-  if (!$result) {
-    echo "Query failed!\n";
-    print mysqli_error($db);
-
-  } else if (!$result || $result->num_rows == 0) {
+  if (!$result || $result->num_rows == 0) {
     echo "No results.\n";
+
   } else {
     echo "<table border=1>\n";
     echo "<tr><td>LName</td><td>FName</td></tr>\n";
@@ -48,7 +46,6 @@ if (!$db) {
    echo "</table>\n";
   }
 }
-
 
 // PHP code about to end
 

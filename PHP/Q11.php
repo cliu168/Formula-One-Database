@@ -1,5 +1,5 @@
 <head> 
-  <title>Constructor Average Points per season</title>
+  <title>Average Points of Constructors per Season</title>
  </head>
  <body>
  
@@ -26,12 +26,10 @@ if (!$db) {
   $result = mysqli_query($db, "CALL Q11()");
   // call to procedure
 
-  if (!$result) {
+  if (!$result || $result->num_rows == 0) {
     echo "No results.\n";
     $show = false;
-
-  } else if (!$result || $result->num_rows == 0) {
-    echo "No results.\n";
+    
   } else {
     echo "<table border=1>\n";
     echo "<tr><td>Name</td><td>AvgPts</td></tr>\n";
@@ -55,7 +53,7 @@ if (!$db) {
 <html>
   <head>
   <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script> 
-    <title> Constructor Average Points per season </title>
+    <title>Average Points of Constructors per Season</title>
     <script>
       var show =<?php echo json_encode($show); ?>;
       window.onload = function () {
@@ -64,7 +62,7 @@ if (!$db) {
           exportEnabled: true,
           theme: "light1",
           title: {
-            text: "Constructor Average Points per season"
+            text: "Average Points of Constructors per Season"
           },
           data: [{
             type: "column",

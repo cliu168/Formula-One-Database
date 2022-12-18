@@ -1,5 +1,5 @@
 <head> 
-  <title>Average Points of Constructors for a Circuit</title>
+  <title>Average Points of Constructors for a Specific Circuit</title>
  </head>
  <body>
  
@@ -62,7 +62,7 @@ if (!$db) {
 <html>
   <head>
   <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script> 
-    <title>Average Points of Constructors for a Circuit</title>
+    <title>Average Points of Constructors for a Specific Circuit</title>
     <script>
       var show =<?php echo json_encode($show); ?>;
       window.onload = function () {
@@ -71,7 +71,7 @@ if (!$db) {
           exportEnabled: true,
           theme: "light1",
           title: {
-            text: "Average Points of Constructors for a Circuit"
+            text: "Average Points of Constructors for a Specific Circuit"
           },
           data: [{
             type: "column",

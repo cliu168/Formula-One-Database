@@ -70,7 +70,7 @@ INSERT INTO Circuits VALUES
     (70,'Red Bull Ring','Spielberg','Austria'),
     (71,'Sochi Autodrom','Sochi','Russia'),
     (73,'Baku City Circuit','Baku','Azerbaijan'),
-    (75,'Autodromo Internacional do Algarve','Portimão','Portugal'),
+    (75,'Autodromo Internacional do Algarve','Portimao','Portugal'),
     (76,'Autodromo Internazionale del Mugello','Mugello','Italy'),
     (77,'Jeddah Corniche Circuit','Jeddah','Saudi Arabia'),
     (78,'Losail International Circuit','Al Daayen','Qatar'),

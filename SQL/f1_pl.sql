@@ -92,7 +92,7 @@ END; //
 -- Slow query
 CREATE OR REPLACE PROCEDURE Q8(IN mycircuitID VARCHAR(100))
 BEGIN
-    SELECT D.fname, D.lname, AVG(R.points) AS AvgPts
+    SELECT D.fname, D.lname, AVG(R.points) AS avgPts
     FROM (
         SELECT P.driverID, P.points
         FROM RacePointsView AS P
@@ -118,6 +118,7 @@ BEGIN
 END; //   
 
 -- Return the average number points for a specific circuit of each constructor and the respective constructor’s name. Order by descending number of points.
+-- Slow query
 CREATE OR REPLACE PROCEDURE Q10(IN mycircuitID VARCHAR(100))
 BEGIN
     SELECT CS.name, AVG(R.points) As avgPts
@@ -190,13 +191,12 @@ END; //
 -- Return the name and location of all circuits and its average accidents/collisions per race. Order by descending average accidents.
 CREATE OR REPLACE PROCEDURE Q15()
 BEGIN
-    SELECT name, location, accidents / numRaces AS AvgNumAccident
+    SELECT name, location, accidents / numRaces AS avgNumAccident
     FROM AccidentsView
     ORDER BY accidents / numRaces DESC;
 END; //
 
 -- Return first name and last name of all drivers who have ever had an accident/collision in a specific circuit.
--- Slow query
 CREATE OR REPLACE PROCEDURE Q16(IN mycircuitID VARCHAR(100))
 BEGIN
     SELECT DISTINCT D.fname, D.lname
@@ -219,6 +219,7 @@ BEGIN
 END; //
 
 -- Return average number of pit stops of all drivers that have won at a specific circuit. Order by ascending pit stops.
+-- Slow query
 -- Missing data
 CREATE OR REPLACE PROCEDURE Q18(IN mycircuitID VARCHAR(100))
 BEGIN

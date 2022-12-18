@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <style>
+    #rcorners {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 15px;
+        border-radius: 25px;
+        border: 2px solid #000000;
+        padding: 20px;
+        width: 350px;
+        height: 300px;
+        display: inline-block;
+        word-wrap: break-word;
+        overflow: auto;
+    }
+    </style>
+     <title>Stephen Zhang Christine Liu Final Project</title>
+    </head>
+    <body>
+    <h1>601.315 Databases Final Project</h1>
+    <b>[Team members] Christine Liu (cliu168) and Stephen Zhang (szhan141)</b>
+    <br>
+    <b>Some of these queries may take long to load due to a large amount of data</b>
+    <br>
+    <img src="https://1000logos.net/wp-content/uploads/2021/06/F1-logo.png" alt="F1 Logo" width = "300" height = "300"/>
+    <br>
+
+    <div id = "rcorners">
+        <h3>1. Rank number of drivers by nationality</h3>
+        <p style="font-family:courier">
+            Which nationalities have the most F1 drivers? Display the nationality and number of drivers. Rank the result by number of driver
+            in descending order.
+            <form action="Q1.php" method="post">
+             <input type="submit" name="descending" value = "Rank in descending order"/>
+            </form>
+            <br>
+        </p>
+    </div>
+    <div id = "rcorners">
+        <h3>2. Find all drivers of a specific nationality</h3>
+        <p style="font-family:courier">
+            Who are the drivers of a specific nationality? Display the nationality, first name, and last name of the drivers. Rank the result
+            by alphabetical order of the drivers last names.
+            <form action="Q2.php" method="post">
+                Nationality:<label for="nationality"></label>
+                  <select name="nationality" id="nationality">
+                    <option value="select">Select a nationality</option>
+                    <option value="American">American</option>
+                    <option value="American-Italian">American-Italian</option>
+                    <option value="Argentine">Argentine</option>
+                    <option value="Argentine-Italian">Argentine-Italian</option>
+                    <option value="Australian">Australian</option>
+                    <option value="Austrian">Austrian</option>
+                    <option value="Belgian">Belgian</option>
+                    <option value="Brazilian">Brazilian</option>
+                    <option value="British">British</option>
+                    <option value="Canadian">Canadian</option>
+                    <option value="Chilean">Chilean</option>
+                    <option value="Chinese">Chinese</option>
+                    <option value="Colombian">Colombian</option>
+                    <option value="Czech">Czech</option>
+                    <option value="Danish">Danish</option>
+                    <option value="Dutch">Dutch</option>
+                    <option value="East German">East German</option>
+                    <option value="Finnish">Finnish</option>
+                    <option value="French">French</option>
+                    <option value="German">German</option>
+                    <option value="Hungarian">Hungarian</option>
+                    <option value="Indian">Indian</option>
+                    <option value="Indonesian">Indonesian</option>
+                    <option value="Irish">Irish</option>
+                    <option value="Italian">Italian</option>
+                    <option value="Japanese">Japanese</option>
+                    <option value="Liechtensteiner">Liechtensteiner</option>
+                    <option value="Malaysian">Malaysian</option>
+                    <option value="Mexican">Mexican</option>
+                    <option value="Monegasque">Monegasque</option>
+                    <option value="New Zealander">New Zealander</option>
+                    <option value="Polish">Polish</option>
+                    <option value="Portuguese">Portuguese</option>
+                    <option value="Rhodesian">Rhodesian</option>
+                    <option value="Russian">Russian</option>
+                    <option value="South African">South African</option>
+                    <option value="Spanish">Spanish</option>
+                    <option value="Swedish">Swedish</option>
+                    <option value="Swiss">Swiss</option>
+                    <option value="Thai">Thai</option>
+                    <option value="Uruguayan">Uruguayan</option>
+                    <option value="Venezuelan">Venezuelan</option>
+                  </select><br>
+                <input type = "Submit">
+            </form>
+        </p>
+
+    </div>
+    <div id = "rcorners">
+        <h3>3. Rank number of circuits by country</h3>
+        <p style="font-family:courier">
+            Which countries have the most circuits? Display the country and number of circuits. Rank the result by number of circuits in
+            descending order.
+            <form action="Q3.php" method="post">
+                <input type="submit" name="descendingcountry" value = "Rank in descending order"/>
+            </form>
+        </p>
+    </div>
+    <div id = "rcorners">
+        <h3>4. Find all circuits in a specific country</h3>
+        <p style="font-family:courier">
+            What circuit(s) are in a specific country? Display the name and location of each circuit.
+            <form action="Q4.php" method="post">
+                Country:<label for="country"></label>
+                  <select name="country" id="country">
+                    <option value="select">Select a country</option>
+                    <option value="Argentina">Argentina</option>
+                    <option value="Australia">Australia</option>
+                    <option value="Austria">Austria</option>
+                    <option value="Azerbaijan">Azerbaijan</option>
+                    <option value="Bahrain">Bahrain</option>
+                    <option value="Belgium">Belgium</option>
+                    <option value="Brazil">Brazil</option>
+                    <option value="Canada">Canada</option>
+                    <option value="China">China</option>
+                    <option value="France">France</option>
+                    <option value="Germany">Germany</option>
+                    <option value="Hungary">Hungary</option>
+                    <option value="India">India</option>
+                    <option value="Italy">Italy</option>
+                    <option value="Japan">Japan</option>
+                    <option value="Korea">Korea</option>
+                    <option value="Malaysia">Malaysia</option>
+                    <option value="Mexico">Mexico</option>
+                    <option value="Monaco">Monaco</option>
+                    <option value="Morocco">Morocco</option>
+                    <option value="Netherlands">Netherlands</option>
+                    <option value="Portugal">Portugal</option>
+                    <option value="Qatar">Qatar</option>
+                    <option value="Russia">Russia</option>
+                    <option value="Saudi Arabia">Saudi Arabia</option>
+                    <option value="Singapore">Singapore</option>
+                    <option value="South Africa">South Africa</option>
+                    <option value="Spain">Spain</option>
+                    <option value="Sweden">Sweden</option>
+                    <option value="Switzerland">Switzerland</option>
+                    <option value="Turkey">Turkey</option>
+                    <option value="UAE">UAE</option>
+                    <option value="UK">UK</option>
+                    <option value="USA">USA</option>
+                  </select><br>
+                <input type = "Submit">
+            </form>
+        </p>
+    </div>
+    <div id = "rcorners">
+        <h3>5. Find all drivers who have won a race</h3>
+        <p style="font-family:courier">
+            Display the first and last name of all drivers that have won at least 1 race before in alphabetical order by last name.
+            <form action="Q5.php" method="post">
+                <input type="submit" name="wonrace" value = "Go"/>
+            </form>
+        </p>
+    </div>
+    <div id = "rcorners">
+        <h3>6. Find all drivers who have gotten pole from a qualifying race</h3>
+        <p style="font-family:courier">
+            Display the first and last name of all drivers that have pole from at least 1 qualifying race before in alphabetical order by last name.
+            <form action="Q6.php" method="post">
+                <input type="submit" name="polequalify" value = "Go"/>
+            </form>
+        </p>
+    </div>
+    <div id = "rcorners">
+        <h3>7. Find all drivers who have won a sprint race before</h3>
+        <p style="font-family:courier">
+            Display the first and last name of all drivers that have won at least 1 sprint race before in alphabetical order by last name.
+            <form action="Q7.php" method="post">
+                <input type="submit" name="sprintwin" value = "Go"/>
+            </form>
+        </p>
+    </div>
+    <div id = "rcorners">
+        <h3>8. Find the average number of points of each driver in a circuit</h3>
+        <p style="font-family:courier">
+            How many points did each driver get in the specified circuit? Display the driver's first name, last name, and average points. Order by descending number of points.
+            <form action="Q8.php" method="post">
+                Circuit:<label for="circuitid"></label>
+                  <select name="circuitid" id="circuitid">
+                    <option value="select">Select a circuit</option>
+                    <option value="29">Adelaide Street Circuit</option>
+                    <option value="64">Ain Diab</option>
+                    <option value="58">Aintree</option>
+                    <option value="1">Albert Park Grand Prix Circuit</option>
+                    <option value="27">Autódromo do Estoril</option>
+                    <option value="21">Autodromo Enzo e Dino Ferrari</option>
+                    <option value="32">Autódromo Hermanos Rodríguez</option>
+                    <option value="75">Autódromo Internacional do Algarve</option>
+                    <option value="36">Autódromo Internacional Nelson Piquet</option>
+                    <option value="76">Autodromo Internazionale del Mugello </option>
+                    <option value="18">Autódromo José Carlos Pace</option>
+                    <option value="25">Autódromo Juan y Oscar Gálvez</option>
+                    <option value="14">Autodromo Nazionale di Monza</option>
+                    <option value="61">AVUS</option>
+                    <option value="3">Bahrain International Circuit</option>
+                    <option value="73">Baku City Circuit</option>
+                    <option value="38">Brands Hatch</option>
+                    <option value="68">Buddh International Circuit</option>
+                    <option value="51">Charade Circuit</option>
+                    <option value="66">Circuit Bremgarten</option>
+                    <option value="4">Circuit de Barcelona-Catalunya</option>
+                    <option value="6">Circuit de Monaco</option>
+                    <option value="8">Circuit de Nevers Magny-Cours</option>
+                    <option value="67">Circuit de Pedralbes</option>
+                    <option value="13">Circuit de Spa-Francorchamps</option>
+                    <option value="7">Circuit Gilles Villeneuve</option>
+                    <option value="52">Circuit Mont-Tremblant</option>
+                    <option value="69">Circuit of the Americas</option>
+                    <option value="39">Circuit Park Zandvoort</option>
+                    <option value="34">Circuit Paul Ricard</option>
+                    <option value="59">Circuito da Boavista</option>
+                    <option value="26">Circuito de Jerez</option>
+                    <option value="37">Detroit Street Circuit</option>
+                    <option value="41">Dijon-Prenois</option>
+                    <option value="31">Donington Park</option>
+                    <option value="42">Fair Park</option>
+                    <option value="16">Fuji Speedway</option>
+                    <option value="10">Hockenheimring</option>
+                    <option value="11">Hungaroring</option>
+                    <option value="19">Indianapolis Motor Speedway</option>
+                    <option value="5">Istanbul Park</option>
+                    <option value="45">Jarama</option>
+                    <option value="77">Jeddah Corniche Circuit</option>
+                    <option value="35">Korean International Circuit</option>
+                    <option value="30">Kyalami</option>
+                    <option value="44">Las Vegas Street Circuit</option>
+                    <option value="54">Le Mans</option>
+                    <option value="43">Long Beach</option>
+                    <option value="78">Losail International Circuit</option>
+                    <option value="15">Marina Bay Street Circuit</option>
+                    <option value="79">Miami International Autodrome</option>
+                    <option value="62">Monsanto Park Circuit</option>
+                    <option value="49">Montjuïc</option>
+                    <option value="48">Mosport International Raceway</option>
+                    <option value="50">Nivelles-Baulers</option>
+                    <option value="20">Nürburgring</option>
+                    <option value="28">Okayama International Circuit</option>
+                    <option value="65">Pescara Circuit</option>
+                    <option value="33">Phoenix street circuit</option>
+                    <option value="56">Prince George Circuit</option>
+                    <option value="70">Red Bull Ring</option>
+                    <option value="55">Reims-Gueux</option>
+                    <option value="60">Riverside International Raceway</option>
+                    <option value="53">Rouen-Les-Essarts</option>
+                    <option value="47">Scandinavian Raceway</option>
+                    <option value="63">Sebring International Raceway</option>
+                    <option value="2">Sepang International Circuit</option>
+                    <option value="17">Shanghai International Circuit</option>
+                    <option value="9">Silverstone Circuit</option>
+                    <option value="71">Sochi Autodrom</option>
+                    <option value="22">Suzuka Circuit</option>
+                    <option value="12">Valencia Street Circuit</option>
+                    <option value="46">Watkins Glen</option>
+                    <option value="24">Yas Marina Circuit</option>
+                    <option value="57">Zeltweg</option>
+                    <option value="40">Zolder</option>
+                  </select><br>
+                <input type = "Submit">
+            </form>
+        </p>
+    </div>
+    <div id = "rcorners">
+        <h3>9. Rank each driver by the average number of points they get per season</h3>
+        <p style="font-family:courier">
+            Who are the drivers that get the most average number of points per season? Order them in descending order of average number of points.
+            <form action="Q9.php" method="post">
+                <input type="submit" name="driveraveragenumpts" value = "Rank in descending order"/>
+            </form>
+        </p>
+    </div>
+    <div id = "rcorners">
+        <h3>10. Find the average number of points each constructor gets in a specific circuit</h3>
+        <p style="font-family:courier">
+            Which constructor obtains the highest average number of points in a specific circuit? Order them in descending order of average number of points.
+            <form action="Q10.php" method="post">
+                Circuit:<label for="circuitid"></label>
+                <select name="circuitid" id="circuitid">
+                    <option value="select">Select a circuit</option>
+                    <option value="29">Adelaide Street Circuit</option>
+                    <option value="64">Ain Diab</option>
+                    <option value="58">Aintree</option>
+                    <option value="1">Albert Park Grand Prix Circuit</option>
+                    <option value="27">Autódromo do Estoril</option>
+                    <option value="21">Autodromo Enzo e Dino Ferrari</option>
+                    <option value="32">Autódromo Hermanos Rodríguez</option>
+                    <option value="75">Autódromo Internacional do Algarve</option>
+                    <option value="36">Autódromo Internacional Nelson Piquet</option>
+                    <option value="76">Autodromo Internazionale del Mugello </option>
+                    <option value="18">Autódromo José Carlos Pace</option>
+                    <option value="25">Autódromo Juan y Oscar Gálvez</option>
+                    <option value="14">Autodromo Nazionale di Monza</option>
+                    <option value="61">AVUS</option>
+                    <option value="3">Bahrain International Circuit</option>
+                    <option value="73">Baku City Circuit</option>
+                    <option value="38">Brands Hatch</option>
+                    <option value="68">Buddh International Circuit</option>
+                    <option value="51">Charade Circuit</option>
+                    <option value="66">Circuit Bremgarten</option>
+                    <option value="4">Circuit de Barcelona-Catalunya</option>
+                    <option value="6">Circuit de Monaco</option>
+                    <option value="8">Circuit de Nevers Magny-Cours</option>
+                    <option value="67">Circuit de Pedralbes</option>
+                    <option value="13">Circuit de Spa-Francorchamps</option>
+                    <option value="7">Circuit Gilles Villeneuve</option>
+                    <option value="52">Circuit Mont-Tremblant</option>
+                    <option value="69">Circuit of the Americas</option>
+                    <option value="39">Circuit Park Zandvoort</option>
+                    <option value="34">Circuit Paul Ricard</option>
+                    <option value="59">Circuito da Boavista</option>
+                    <option value="26">Circuito de Jerez</option>
+                    <option value="37">Detroit Street Circuit</option>
+                    <option value="41">Dijon-Prenois</option>
+                    <option value="31">Donington Park</option>
+                    <option value="42">Fair Park</option>
+                    <option value="16">Fuji Speedway</option>
+                    <option value="10">Hockenheimring</option>
+                    <option value="11">Hungaroring</option>
+                    <option value="19">Indianapolis Motor Speedway</option>
+                    <option value="5">Istanbul Park</option>
+                    <option value="45">Jarama</option>
+                    <option value="77">Jeddah Corniche Circuit</option>
+                    <option value="35">Korean International Circuit</option>
+                    <option value="30">Kyalami</option>
+                    <option value="44">Las Vegas Street Circuit</option>
+                    <option value="54">Le Mans</option>
+                    <option value="43">Long Beach</option>
+                    <option value="78">Losail International Circuit</option>
+                    <option value="15">Marina Bay Street Circuit</option>
+                    <option value="79">Miami International Autodrome</option>
+                    <option value="62">Monsanto Park Circuit</option>
+                    <option value="49">Montjuïc</option>
+                    <option value="48">Mosport International Raceway</option>
+                    <option value="50">Nivelles-Baulers</option>
+                    <option value="20">Nürburgring</option>
+                    <option value="28">Okayama International Circuit</option>
+                    <option value="65">Pescara Circuit</option>
+                    <option value="33">Phoenix street circuit</option>
+                    <option value="56">Prince George Circuit</option>
+                    <option value="70">Red Bull Ring</option>
+                    <option value="55">Reims-Gueux</option>
+                    <option value="60">Riverside International Raceway</option>
+                    <option value="53">Rouen-Les-Essarts</option>
+                    <option value="47">Scandinavian Raceway</option>
+                    <option value="63">Sebring International Raceway</option>
+                    <option value="2">Sepang International Circuit</option>
+                    <option value="17">Shanghai International Circuit</option>
+                    <option value="9">Silverstone Circuit</option>
+                    <option value="71">Sochi Autodrom</option>
+                    <option value="22">Suzuka Circuit</option>
+                    <option value="12">Valencia Street Circuit</option>
+                    <option value="46">Watkins Glen</option>
+                    <option value="24">Yas Marina Circuit</option>
+                    <option value="57">Zeltweg</option>
+                    <option value="40">Zolder</option>
+                </select><br>
+                <input type = "Submit">
+            </form>
+        </p>
+    </div>
+    <div id = "rcorners">
+        <h3>11. Rank the constructors by the average number of points they get per season</h3>
+        <p style="font-family:courier">
+            Which constructors obtain the highest average number of points per season? Order them in descending order of average number of points.
+            <form action="Q11.php" method="post">
+                <input type="submit" name="constructoraveragenumpts" value = "Rank in descending order"/>
+            </form>
+        </p>
+    </div>
+    <div id = "rcorners">
+        <h3>12. Rank the drivers by their number of wins in a specific circuit</h3>
+        <p style="font-family:courier">
+            Which drivers win the most in a circuit? Order them in descending order of number of wins.
+            <form action="Q12.php" method="post">
+                Circuit:<label for="circuitid"></label>
+                <select name="circuitid" id="circuitid">
+                    <option value="select">Select a circuit</option>
+                    <option value="29">Adelaide Street Circuit</option>
+                    <option value="64">Ain Diab</option>
+                    <option value="58">Aintree</option>
+                    <option value="1">Albert Park Grand Prix Circuit</option>
+                    <option value="27">Autódromo do Estoril</option>
+                    <option value="21">Autodromo Enzo e Dino Ferrari</option>
+                    <option value="32">Autódromo Hermanos Rodríguez</option>
+                    <option value="75">Autódromo Internacional do Algarve</option>
+                    <option value="36">Autódromo Internacional Nelson Piquet</option>
+                    <option value="76">Autodromo Internazionale del Mugello </option>
+                    <option value="18">Autódromo José Carlos Pace</option>
+                    <option value="25">Autódromo Juan y Oscar Gálvez</option>
+                    <option value="14">Autodromo Nazionale di Monza</option>
+                    <option value="61">AVUS</option>
+                    <option value="3">Bahrain International Circuit</option>
+                    <option value="73">Baku City Circuit</option>
+                    <option value="38">Brands Hatch</option>
+                    <option value="68">Buddh International Circuit</option>
+                    <option value="51">Charade Circuit</option>
+                    <option value="66">Circuit Bremgarten</option>
+                    <option value="4">Circuit de Barcelona-Catalunya</option>
+                    <option value="6">Circuit de Monaco</option>
+                    <option value="8">Circuit de Nevers Magny-Cours</option>
+                    <option value="67">Circuit de Pedralbes</option>
+                    <option value="13">Circuit de Spa-Francorchamps</option>
+                    <option value="7">Circuit Gilles Villeneuve</option>
+                    <option value="52">Circuit Mont-Tremblant</option>
+                    <option value="69">Circuit of the Americas</option>
+                    <option value="39">Circuit Park Zandvoort</option>
+                    <option value="34">Circuit Paul Ricard</option>
+                    <option value="59">Circuito da Boavista</option>
+                    <option value="26">Circuito de Jerez</option>
+                    <option value="37">Detroit Street Circuit</option>
+                    <option value="41">Dijon-Prenois</option>
+                    <option value="31">Donington Park</option>
+                    <option value="42">Fair Park</option>
+                    <option value="16">Fuji Speedway</option>
+                    <option value="10">Hockenheimring</option>
+                    <option value="11">Hungaroring</option>
+                    <option value="19">Indianapolis Motor Speedway</option>
+                    <option value="5">Istanbul Park</option>
+                    <option value="45">Jarama</option>
+                    <option value="77">Jeddah Corniche Circuit</option>
+                    <option value="35">Korean International Circuit</option>
+                    <option value="30">Kyalami</option>
+                    <option value="44">Las Vegas Street Circuit</option>
+                    <option value="54">Le Mans</option>
+                    <option value="43">Long Beach</option>
+                    <option value="78">Losail International Circuit</option>
+                    <option value="15">Marina Bay Street Circuit</option>
+                    <option value="79">Miami International Autodrome</option>
+                    <option value="62">Monsanto Park Circuit</option>
+                    <option value="49">Montjuïc</option>
+                    <option value="48">Mosport International Raceway</option>
+                    <option value="50">Nivelles-Baulers</option>
+                    <option value="20">Nürburgring</option>
+                    <option value="28">Okayama International Circuit</option>
+                    <option value="65">Pescara Circuit</option>
+                    <option value="33">Phoenix street circuit</option>
+                    <option value="56">Prince George Circuit</option>
+                    <option value="70">Red Bull Ring</option>
+                    <option value="55">Reims-Gueux</option>
+                    <option value="60">Riverside International Raceway</option>
+                    <option value="53">Rouen-Les-Essarts</option>
+                    <option value="47">Scandinavian Raceway</option>
+                    <option value="63">Sebring International Raceway</option>
+                    <option value="2">Sepang International Circuit</option>
+                    <option value="17">Shanghai International Circuit</option>
+                    <option value="9">Silverstone Circuit</option>
+                    <option value="71">Sochi Autodrom</option>
+                    <option value="22">Suzuka Circuit</option>
+                    <option value="12">Valencia Street Circuit</option>
+                    <option value="46">Watkins Glen</option>
+                    <option value="24">Yas Marina Circuit</option>
+                    <option value="57">Zeltweg</option>
+                    <option value="40">Zolder</option>
+                </select><br>
+                <input type = "Submit">
+            </form>
+        </p>
+    </div>
+    <div id = "rcorners">
+        <h3>13. Find the drivers with the fastest lap time in a specific circuit</h3>
+        <p style="font-family:courier">
+            Which drivers have the fastest lap time in a specific circuit? Order them in descending order by fastest lap time.
+            <form action="Q13.php" method="post">
+                Circuit:<label for="circuitid"></label>
+                <select name="circuitid" id="circuitid">
+                    <option value="select">Select a circuit</option>
+                    <option value="29">Adelaide Street Circuit</option>
+                    <option value="64">Ain Diab</option>
+                    <option value="58">Aintree</option>
+                    <option value="1">Albert Park Grand Prix Circuit</option>
+                    <option value="27">Autódromo do Estoril</option>
+                    <option value="21">Autodromo Enzo e Dino Ferrari</option>
+                    <option value="32">Autódromo Hermanos Rodríguez</option>
+                    <option value="75">Autódromo Internacional do Algarve</option>
+                    <option value="36">Autódromo Internacional Nelson Piquet</option>
+                    <option value="76">Autodromo Internazionale del Mugello </option>
+                    <option value="18">Autódromo José Carlos Pace</option>
+                    <option value="25">Autódromo Juan y Oscar Gálvez</option>
+                    <option value="14">Autodromo Nazionale di Monza</option>
+                    <option value="61">AVUS</option>
+                    <option value="3">Bahrain International Circuit</option>
+                    <option value="73">Baku City Circuit</option>
+                    <option value="38">Brands Hatch</option>
+                    <option value="68">Buddh International Circuit</option>
+                    <option value="51">Charade Circuit</option>
+                    <option value="66">Circuit Bremgarten</option>
+                    <option value="4">Circuit de Barcelona-Catalunya</option>
+                    <option value="6">Circuit de Monaco</option>
+                    <option value="8">Circuit de Nevers Magny-Cours</option>
+                    <option value="67">Circuit de Pedralbes</option>
+                    <option value="13">Circuit de Spa-Francorchamps</option>
+                    <option value="7">Circuit Gilles Villeneuve</option>
+                    <option value="52">Circuit Mont-Tremblant</option>
+                    <option value="69">Circuit of the Americas</option>
+                    <option value="39">Circuit Park Zandvoort</option>
+                    <option value="34">Circuit Paul Ricard</option>
+                    <option value="59">Circuito da Boavista</option>
+                    <option value="26">Circuito de Jerez</option>
+                    <option value="37">Detroit Street Circuit</option>
+                    <option value="41">Dijon-Prenois</option>
+                    <option value="31">Donington Park</option>
+                    <option value="42">Fair Park</option>
+                    <option value="16">Fuji Speedway</option>
+                    <option value="10">Hockenheimring</option>
+                    <option value="11">Hungaroring</option>
+                    <option value="19">Indianapolis Motor Speedway</option>
+                    <option value="5">Istanbul Park</option>
+                    <option value="45">Jarama</option>
+                    <option value="77">Jeddah Corniche Circuit</option>
+                    <option value="35">Korean International Circuit</option>
+                    <option value="30">Kyalami</option>
+                    <option value="44">Las Vegas Street Circuit</option>
+                    <option value="54">Le Mans</option>
+                    <option value="43">Long Beach</option>
+                    <option value="78">Losail International Circuit</option>
+                    <option value="15">Marina Bay Street Circuit</option>
+                    <option value="79">Miami International Autodrome</option>
+                    <option value="62">Monsanto Park Circuit</option>
+                    <option value="49">Montjuïc</option>
+                    <option value="48">Mosport International Raceway</option>
+                    <option value="50">Nivelles-Baulers</option>
+                    <option value="20">Nürburgring</option>
+                    <option value="28">Okayama International Circuit</option>
+                    <option value="65">Pescara Circuit</option>
+                    <option value="33">Phoenix street circuit</option>
+                    <option value="56">Prince George Circuit</option>
+                    <option value="70">Red Bull Ring</option>
+                    <option value="55">Reims-Gueux</option>
+                    <option value="60">Riverside International Raceway</option>
+                    <option value="53">Rouen-Les-Essarts</option>
+                    <option value="47">Scandinavian Raceway</option>
+                    <option value="63">Sebring International Raceway</option>
+                    <option value="2">Sepang International Circuit</option>
+                    <option value="17">Shanghai International Circuit</option>
+                    <option value="9">Silverstone Circuit</option>
+                    <option value="71">Sochi Autodrom</option>
+                    <option value="22">Suzuka Circuit</option>
+                    <option value="12">Valencia Street Circuit</option>
+                    <option value="46">Watkins Glen</option>
+                    <option value="24">Yas Marina Circuit</option>
+                    <option value="57">Zeltweg</option>
+                    <option value="40">Zolder</option>
+                </select><br>
+                <input type = "Submit">
+            </form>
+        </p>
+    </div>
+    <div id = "rcorners">
+        <h3>14. Rank the circuits by the total number of accidents that have occurred there</h3>
+        <p style="font-family:courier">
+            Which circuits have had the highest number of accidents? Order them in descending order of number of accidents.
+            <form action="Q14.php" method="post">
+                <input type="submit" name="circuitnumaccident" value = "Rank in descending order"/>
+            </form>
+        </p>
+    </div>
+    <div id = "rcorners">
+        <h3>15. Find the average number of accidents that occurred in each circuit</h3>
+        <p style="font-family:courier">
+            Which circuits have the most accidents? Order by descending number of accidents.
+            <form action="Q15.php" method="post">
+                <input type="submit" name="descendingavgaccidentcircuit" value = "Rank in descending order"/>
+            </form>
+        </p>
+    </div>
+    <div id = "rcorners">
+        <h3>16. Find all drivers that have experienced an accident in a specific circuit before</h3>
+        <p style="font-family:courier">
+            Which drivers have had an accident in a certain circuit before?
+            <form action="Q16.php" method="post">
+                Circuit:<label for="circuitid"></label>
+                <select name="circuitid" id="circuitid">
+                    <option value="select">Select a circuit</option>
+                    <option value="29">Adelaide Street Circuit</option>
+                    <option value="64">Ain Diab</option>
+                    <option value="58">Aintree</option>
+                    <option value="1">Albert Park Grand Prix Circuit</option>
+                    <option value="27">Autódromo do Estoril</option>
+                    <option value="21">Autodromo Enzo e Dino Ferrari</option>
+                    <option value="32">Autódromo Hermanos Rodríguez</option>
+                    <option value="75">Autódromo Internacional do Algarve</option>
+                    <option value="36">Autódromo Internacional Nelson Piquet</option>
+                    <option value="76">Autodromo Internazionale del Mugello </option>
+                    <option value="18">Autódromo José Carlos Pace</option>
+                    <option value="25">Autódromo Juan y Oscar Gálvez</option>
+                    <option value="14">Autodromo Nazionale di Monza</option>
+                    <option value="61">AVUS</option>
+                    <option value="3">Bahrain International Circuit</option>
+                    <option value="73">Baku City Circuit</option>
+                    <option value="38">Brands Hatch</option>
+                    <option value="68">Buddh International Circuit</option>
+                    <option value="51">Charade Circuit</option>
+                    <option value="66">Circuit Bremgarten</option>
+                    <option value="4">Circuit de Barcelona-Catalunya</option>
+                    <option value="6">Circuit de Monaco</option>
+                    <option value="8">Circuit de Nevers Magny-Cours</option>
+                    <option value="67">Circuit de Pedralbes</option>
+                    <option value="13">Circuit de Spa-Francorchamps</option>
+                    <option value="7">Circuit Gilles Villeneuve</option>
+                    <option value="52">Circuit Mont-Tremblant</option>
+                    <option value="69">Circuit of the Americas</option>
+                    <option value="39">Circuit Park Zandvoort</option>
+                    <option value="34">Circuit Paul Ricard</option>
+                    <option value="59">Circuito da Boavista</option>
+                    <option value="26">Circuito de Jerez</option>
+                    <option value="37">Detroit Street Circuit</option>
+                    <option value="41">Dijon-Prenois</option>
+                    <option value="31">Donington Park</option>
+                    <option value="42">Fair Park</option>
+                    <option value="16">Fuji Speedway</option>
+                    <option value="10">Hockenheimring</option>
+                    <option value="11">Hungaroring</option>
+                    <option value="19">Indianapolis Motor Speedway</option>
+                    <option value="5">Istanbul Park</option>
+                    <option value="45">Jarama</option>
+                    <option value="77">Jeddah Corniche Circuit</option>
+                    <option value="35">Korean International Circuit</option>
+                    <option value="30">Kyalami</option>
+                    <option value="44">Las Vegas Street Circuit</option>
+                    <option value="54">Le Mans</option>
+                    <option value="43">Long Beach</option>
+                    <option value="78">Losail International Circuit</option>
+                    <option value="15">Marina Bay Street Circuit</option>
+                    <option value="79">Miami International Autodrome</option>
+                    <option value="62">Monsanto Park Circuit</option>
+                    <option value="49">Montjuïc</option>
+                    <option value="48">Mosport International Raceway</option>
+                    <option value="50">Nivelles-Baulers</option>
+                    <option value="20">Nürburgring</option>
+                    <option value="28">Okayama International Circuit</option>
+                    <option value="65">Pescara Circuit</option>
+                    <option value="33">Phoenix street circuit</option>
+                    <option value="56">Prince George Circuit</option>
+                    <option value="70">Red Bull Ring</option>
+                    <option value="55">Reims-Gueux</option>
+                    <option value="60">Riverside International Raceway</option>
+                    <option value="53">Rouen-Les-Essarts</option>
+                    <option value="47">Scandinavian Raceway</option>
+                    <option value="63">Sebring International Raceway</option>
+                    <option value="2">Sepang International Circuit</option>
+                    <option value="17">Shanghai International Circuit</option>
+                    <option value="9">Silverstone Circuit</option>
+                    <option value="71">Sochi Autodrom</option>
+                    <option value="22">Suzuka Circuit</option>
+                    <option value="12">Valencia Street Circuit</option>
+                    <option value="46">Watkins Glen</option>
+                    <option value="24">Yas Marina Circuit</option>
+                    <option value="57">Zeltweg</option>
+                    <option value="40">Zolder</option>
+                </select><br>
+                <input type = "Submit">
+            </form>
+        </p>
+    </div>
+    <div id = "rcorners">
+        <h3>17. Find the number of races a driver has had an issue in</h3>
+        <p style="font-family:courier">
+            Which drivers have had the most issues in races in their career so far? Order by descending order of number of races with issues.
+            <form action="Q17.php" method="post">
+                <input type="submit" name="driverissuesnum" value = "Rank in descending order"/>
+            </form>
+        </p>
+    </div>
+    <div id = "rcorners">
+        <h3>18. Find the average number of pit stops each winner of a specific circuit has had</h3>
+        <p style="font-family:courier">
+            What is the average number of pit stops that the winner of a circuit has?
+            <form action="Q18.php" method="post">
+                Circuit:<label for="circuitid"></label>
+                <select name="circuitid" id="circuitid">
+                    <option value="select">Select a circuit</option>
+                    <option value="29">Adelaide Street Circuit</option>
+                    <option value="64">Ain Diab</option>
+                    <option value="58">Aintree</option>
+                    <option value="1">Albert Park Grand Prix Circuit</option>
+                    <option value="27">Autódromo do Estoril</option>
+                    <option value="21">Autodromo Enzo e Dino Ferrari</option>
+                    <option value="32">Autódromo Hermanos Rodríguez</option>
+                    <option value="75">Autódromo Internacional do Algarve</option>
+                    <option value="36">Autódromo Internacional Nelson Piquet</option>
+                    <option value="76">Autodromo Internazionale del Mugello </option>
+                    <option value="18">Autódromo José Carlos Pace</option>
+                    <option value="25">Autódromo Juan y Oscar Gálvez</option>
+                    <option value="14">Autodromo Nazionale di Monza</option>
+                    <option value="61">AVUS</option>
+                    <option value="3">Bahrain International Circuit</option>
+                    <option value="73">Baku City Circuit</option>
+                    <option value="38">Brands Hatch</option>
+                    <option value="68">Buddh International Circuit</option>
+                    <option value="51">Charade Circuit</option>
+                    <option value="66">Circuit Bremgarten</option>
+                    <option value="4">Circuit de Barcelona-Catalunya</option>
+                    <option value="6">Circuit de Monaco</option>
+                    <option value="8">Circuit de Nevers Magny-Cours</option>
+                    <option value="67">Circuit de Pedralbes</option>
+                    <option value="13">Circuit de Spa-Francorchamps</option>
+                    <option value="7">Circuit Gilles Villeneuve</option>
+                    <option value="52">Circuit Mont-Tremblant</option>
+                    <option value="69">Circuit of the Americas</option>
+                    <option value="39">Circuit Park Zandvoort</option>
+                    <option value="34">Circuit Paul Ricard</option>
+                    <option value="59">Circuito da Boavista</option>
+                    <option value="26">Circuito de Jerez</option>
+                    <option value="37">Detroit Street Circuit</option>
+                    <option value="41">Dijon-Prenois</option>
+                    <option value="31">Donington Park</option>
+                    <option value="42">Fair Park</option>
+                    <option value="16">Fuji Speedway</option>
+                    <option value="10">Hockenheimring</option>
+                    <option value="11">Hungaroring</option>
+                    <option value="19">Indianapolis Motor Speedway</option>
+                    <option value="5">Istanbul Park</option>
+                    <option value="45">Jarama</option>
+                    <option value="77">Jeddah Corniche Circuit</option>
+                    <option value="35">Korean International Circuit</option>
+                    <option value="30">Kyalami</option>
+                    <option value="44">Las Vegas Street Circuit</option>
+                    <option value="54">Le Mans</option>
+                    <option value="43">Long Beach</option>
+                    <option value="78">Losail International Circuit</option>
+                    <option value="15">Marina Bay Street Circuit</option>
+                    <option value="79">Miami International Autodrome</option>
+                    <option value="62">Monsanto Park Circuit</option>
+                    <option value="49">Montjuïc</option>
+                    <option value="48">Mosport International Raceway</option>
+                    <option value="50">Nivelles-Baulers</option>
+                    <option value="20">Nürburgring</option>
+                    <option value="28">Okayama International Circuit</option>
+                    <option value="65">Pescara Circuit</option>
+                    <option value="33">Phoenix street circuit</option>
+                    <option value="56">Prince George Circuit</option>
+                    <option value="70">Red Bull Ring</option>
+                    <option value="55">Reims-Gueux</option>
+                    <option value="60">Riverside International Raceway</option>
+                    <option value="53">Rouen-Les-Essarts</option>
+                    <option value="47">Scandinavian Raceway</option>
+                    <option value="63">Sebring International Raceway</option>
+                    <option value="2">Sepang International Circuit</option>
+                    <option value="17">Shanghai International Circuit</option>
+                    <option value="9">Silverstone Circuit</option>
+                    <option value="71">Sochi Autodrom</option>
+                    <option value="22">Suzuka Circuit</option>
+                    <option value="12">Valencia Street Circuit</option>
+                    <option value="46">Watkins Glen</option>
+                    <option value="24">Yas Marina Circuit</option>
+                    <option value="57">Zeltweg</option>
+                    <option value="40">Zolder</option>
+                </select><br>
+                <input type = "Submit">
+            </form>
+        </p>
+    </div>
+    <div id = "rcorners">
+        <h3>19. Rank all the nationalities present in F1 by their average number of points</h3>
+        <p style="font-family:courier">
+            Which nationalities have had the highest average number of points? Order them by descending order of average number of points.
+            <form action="Q19.php" method="post">
+                <input type="submit" name="nationalityaveragenumpts" value = "Rank in descending order"/>
+            </form>
+        </p>
+    </div>
+    <div id = "rcorners">
+        <h3>20. Rank all the ages of the drivers by their average number of points</h3>
+        <p style="font-family:courier">
+            Do younger or older drivers have a higher average number of points? Order them in descending order of average number of points.
+            <form action="Q20.php" method="post">
+                <input type="submit" name="ageaveragenumpts" value = "Rank in descending order"/>
+            </form>
+        </p>
+    </div>
+
+
+    <br>
+   
+    </body>
+   </html>

@@ -33,7 +33,7 @@ if (!$db) {
 
   } else {
     echo "<table border=1>\n";
-    echo "<tr><td>Country</td><td>numCircuits</td></tr>\n";
+    echo "<tr><td>Country</td><td>NumCircuits</td></tr>\n";
     $not_done = 0;
     while ($myrow = mysqli_fetch_array($result)) {
       printf("<tr><td>%s</td><td>%s</td></tr>\n", 

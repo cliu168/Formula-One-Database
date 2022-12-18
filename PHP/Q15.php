@@ -33,13 +33,13 @@ if (!$db) {
   } else {
     // call to procedure
     echo "<table border=1>\n";
-    echo "<tr><td>Name</td><td>Location</td><td>Average number of accidents</td></tr>\n";
+    echo "<tr><td>Name</td><td>Location</td><td>AverageAccidents</td></tr>\n";
     $not_done = 0;
     while ($myrow = mysqli_fetch_array($result)) {
       printf("<tr><td>%s</td><td>%s</td><td>%.2f</td></tr>\n", 
-        $myrow["name"], $myrow["location"], $myrow["AvgNumAccident"]);
+        $myrow["name"], $myrow["location"], $myrow["avgNumAccident"]);
         if ($not_done < 10) {
-        array_push($dataPoints, array("label"=> $myrow["name"], "y"=> $myrow["AvgNumAccident"]));
+        array_push($dataPoints, array("label"=> $myrow["name"], "y"=> $myrow["avgNumAccident"]));
         }
       $not_done++;
     }

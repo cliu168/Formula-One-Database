@@ -32,11 +32,11 @@ if (!$db) {
     
   } else {
     echo "<table border=1>\n";
-    echo "<tr><td>Name</td><td>AvgPts</td></tr>\n";
+    echo "<tr><td>Name</td><td>Location</td><td>AveragePts</td></tr>\n";
     $not_done = 0;
     while ($myrow = mysqli_fetch_array($result)) {
         printf("<tr><td>%s</td><td>%.2f</td></tr>\n", 
-        $myrow["name"], $myrow["avgPts"]);
+        $myrow["name"], $myrow["location"], $myrow["avgPts"]);
         if ($not_done < 10) {
             $not_broken = iconv("UTF-8", "UTF-8//IGNORE", $myrow["name"]);
             array_push($dataPoints, array("label"=> $not_broken, "y"=> $myrow["avgPts"])); 

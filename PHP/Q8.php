@@ -40,14 +40,14 @@ if (!$db) {
   
   } else {
     echo "<table border=1>\n";
-    echo "<tr><td>First name</td><td>Last name</td><td>AveragePts</td></tr>\n";
+    echo "<tr><td>FirstName</td><td>LastName</td><td>AveragePts</td></tr>\n";
     $not_done = 0;
     while ($myrow = mysqli_fetch_array($result)) {
       printf("<tr><td>%s</td><td>%s</td><td>%.2f</td></tr>\n", 
-        $myrow["fname"], $myrow["lname"], $myrow["AvgPts"]);
+        $myrow["fname"], $myrow["lname"], $myrow["avgPts"]);
         if ($not_done < 10) {
           $not_broken = iconv("UTF-8", "UTF-8//IGNORE", $myrow["lname"]);
-          array_push($dataPoints, array("label"=> $not_broken, "y"=> $myrow["AvgPts"]));
+          array_push($dataPoints, array("label"=> $not_broken, "y"=> $myrow["avgPts"]));
       }
       $not_done++;
     }

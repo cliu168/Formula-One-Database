@@ -37,7 +37,7 @@ if (!$db) {
   } else {
     // call to procedure
     echo "<table border=1>\n";
-    echo "<tr><td>Nationality</td><td>numDrivers</td></tr>\n";
+    echo "<tr><td>Nationality</td><td>NumDrivers</td></tr>\n";
     $not_done = 0;
     while ($myrow = mysqli_fetch_array($result)) {
       printf("<tr><td>%s</td><td>%s</td></tr>\n", 

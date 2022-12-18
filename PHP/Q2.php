@@ -36,11 +36,10 @@ if (!$db) {
 
   } else {
     echo "<table border=1>\n";
-    echo "<tr><td>LName</td><td>FName</td></tr>\n";
-
+    echo "<tr><td>FirstName</td><td>LastName</td></tr>\n";
     while ($myrow = mysqli_fetch_array($result)) {
       printf("<tr><td>%s</td><td>%s</td></tr>\n", 
-        $myrow["lName"], $myrow["fName"]);
+        $myrow["fName"], $myrow["lName"]);
     }
 
    echo "</table>\n";

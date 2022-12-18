@@ -40,7 +40,7 @@ if (!$db) {
     
   } else {
     echo "<table border=1>\n";
-    echo "<tr><td>Name</td><td>AvgPts</td></tr>\n";
+    echo "<tr><td>Name</td><td>AveragePts</td></tr>\n";
     $not_done = 0;
     while ($myrow = mysqli_fetch_array($result)) {
         printf("<tr><td>%s</td><td>%.2f</td></tr>\n", 
